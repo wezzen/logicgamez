@@ -1,4 +1,4 @@
-package com.github.wezzen.logicgamez;
+package com.github.wezzen.logicgamez.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
