@@ -1,6 +1,9 @@
+import org.checkerframework.gradle.plugin.CheckerFrameworkExtension
+
 plugins {
 	id("org.springframework.boot") version "2.7.0-SNAPSHOT"
 	id("io.spring.dependency-management") version "1.0.11.RELEASE"
+	id("org.checkerframework") version "0.6.5"
 	java
 }
 
@@ -27,4 +30,10 @@ dependencies {
 
 tasks.test {
 	useJUnitPlatform()
+}
+
+configure<CheckerFrameworkExtension> {
+	checkers = listOf(
+		"org.checkerframework.checker.nullness.NullnessChecker",
+	)
 }
