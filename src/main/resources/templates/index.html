@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
+<header th:insert="static/header :: header"></header>
 Hello, world!
+<div th:insert="static/footer :: footer"></div>
 </body>
 </html>
