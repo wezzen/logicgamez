@@ -4,7 +4,7 @@ plugins {
 	id("org.springframework.boot") version "2.7.0-SNAPSHOT"
 	id("io.spring.dependency-management") version "1.0.11.RELEASE"
 	id("org.checkerframework") version "0.6.5"
-	id("com.diffplug.spotless") version "6.1.0"
+	id("com.diffplug.spotless") version "6.2.0"
 	java
 }
 
