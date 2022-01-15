@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" th:rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.bundle.js}"></script>
+    <script type="text/javascript" th:src="@{/webjars/jquery/jquery.js}"></script>
+    <title>Sign In</title>
+</head>
+<body>
+<section class="vh-100" style="background-color: #eaeaea;">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <div class="card shadow-2-strong" style="border-radius: 1rem;">
+                    <div class="card-body p-5 text-center">
+                        <div class="mb-4" style="height: 100px;width: 100px;background-color: #911414;margin:auto;">
+                        </div>
+                        <h3 class="mb-5">Sign In</h3>
+                        <form class="needs-validation" method="post" th:action="@{/login}" novalidate>
+                            <div th:if="${param.error}">
+                                <div class="alert alert-danger">Wrong login/password</div>
+                            </div>
+                            <div th:if="${param.logout}">
+                                <div class="alert alert-info">Successful log out.</div>
+                            </div>
+                            <div class="form-floating mb-4">
+                                <input class="form-control form-control-lg" id="email" placeholder="name@example.com" name="username"
+                                       type="email" required/>
+                                <label for="email">Email</label>
+                                <div class="invalid-feedback">
+                                    Please enter a Email.
+                                </div>
+                            </div>
+                            <div class="form-floating mb-4">
+                                <input class="form-control form-control-lg" id="password" placeholder="Password"
+                                       name="password"
+                                       type="password" required/>
+                                <label for="password">Password</label>
+                                <div class="invalid-feedback">
+                                    Please enter a Password.
+                                </div>
+                            </div>
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-primary btn-lg" id="login-submit" type="submit">Login</button>
+                            </div>
+                            <div class="mb-0 mt-5">Don't have an account? <a class="text-decoration-none text-black-50 fw-bold" th:href="@{/register}">Sign Up</a>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</section>
+<script th:src="@{/js/validation.js}"></script>
+</body>
+</html>

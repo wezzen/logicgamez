@@ -26,6 +26,19 @@ repositories {
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
 	implementation("org.springframework.boot:spring-boot-starter-web")
+	implementation("org.springframework.boot:spring-boot-starter-security")
+	implementation("org.springframework.boot:spring-boot-starter-validation")
+	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+	implementation("org.thymeleaf.extras:thymeleaf-extras-springsecurity5")
+	implementation("com.google.guava:guava:31.0.1-jre")
+
+	developmentOnly("org.springframework.boot:spring-boot-devtools")
+
+	runtimeOnly("org.postgresql:postgresql:42.3.1")
+	compileOnly("org.webjars:bootstrap:5.1.3")
+	compileOnly("org.webjars:jquery:3.6.0")
+	implementation("org.webjars:webjars-locator:0.42")
+
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 
