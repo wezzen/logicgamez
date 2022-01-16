@@ -1,10 +1,10 @@
 import org.checkerframework.gradle.plugin.CheckerFrameworkExtension
 
 plugins {
-	id("org.springframework.boot") version "2.7.0-SNAPSHOT"
+	id("org.springframework.boot") version "2.6.2"
 	id("io.spring.dependency-management") version "1.0.11.RELEASE"
-	id("org.checkerframework") version "0.6.5"
-	id("com.diffplug.spotless") version "6.1.0"
+	id("org.checkerframework") version "0.6.7"
+	id("com.diffplug.spotless") version "6.2.0"
 	java
 }
 
@@ -26,6 +26,19 @@ repositories {
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
 	implementation("org.springframework.boot:spring-boot-starter-web")
+	implementation("org.springframework.boot:spring-boot-starter-security")
+	implementation("org.springframework.boot:spring-boot-starter-validation")
+	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+	implementation("org.thymeleaf.extras:thymeleaf-extras-springsecurity5")
+	implementation("com.google.guava:guava:31.0.1-jre")
+
+	developmentOnly("org.springframework.boot:spring-boot-devtools")
+
+	runtimeOnly("org.postgresql:postgresql:42.3.1")
+	compileOnly("org.webjars:bootstrap:5.1.3")
+	compileOnly("org.webjars:jquery:3.6.0")
+	implementation("org.webjars:webjars-locator:0.42")
+
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 

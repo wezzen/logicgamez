@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8"/>
+    <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" th:rel="stylesheet" type="text/css"/>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.js}" type="text/javascript"></script>
+    <script th:src="@{/webjars/jquery/jquery.js}" type="text/javascript"></script>
+    <title>Registration</title>
+</head>
+<body>
+<section class="vh-100" style="background-color: #eaeaea;">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <div class="card shadow-2-strong" style="border-radius: 1rem;">
+                    <div class="card-body p-5 text-center">
+                        <div th:if="${param.success}">
+                            <div class="alert alert-info">You've successfully registered!</div>
+                        </div>
+                        <div class="mb-4" style="height: 100px;width: 100px;background-color: #911414;margin:auto;">
+                        </div>
+                        <h3 class="mb-5">Registration</h3>
+                        <!--/*@thymesVar id="userRegistrationDto" type="com.github.wezzen.logicgamez.auth.UserRegistrationDto"*/-->
+                        <form class="needs-validation" method="post" novalidate
+                              th:action="@{/register}" th:object="${userRegistrationDto}">
+                            <div th:if="${message != null}">
+                                <div class="alert alert-danger" th:text="${message}"></div>
+                            </div>
+                            <p class="alert alert-danger" th:each="error : ${#fields.errors('global')}"
+                               th:if="${#fields.hasGlobalErrors()}" th:text="${error}">Validation error
+                            </p>
+                            <div class="form-floating mb-4"
+                                 th:classappend="${#fields.hasErrors('username')}? 'has-error':''">
+                                <input class="form-control form-control-lg" id="username" maxlength="30"
+                                       minlength="2" placeholder="username" required th:field="*{username}"/>
+                                <label for="username">Username</label>
+                                <div class="invalid-feedback text-start">
+                                    Please enter a Username.
+                                </div>
+                                <p class="alert alert-danger" th:each="error : ${#fields.errors('username')}"
+                                   th:text="${error}">Validation error
+                                </p>
+                            </div>
+                            <div class="form-floating mb-4"
+                                 th:classappend="${#fields.hasErrors('email')}? 'has-error':''">
+                                <input class="form-control form-control-lg" id="email" placeholder="name@example.com"
+                                       required th:field="*{email}" type="email"/>
+                                <label for="email">E-mail</label>
+                                <div class="invalid-feedback text-start">
+                                    Please enter a valid E-mail.
+                                </div>
+                                <p class="alert alert-danger" th:each="error : ${#fields.errors('email')}"
+                                   th:text="${error}">Validation error
+                                </p>
+                            </div>
+                            <div class="form-floating mb-4"
+                                 th:classappend="${#fields.hasErrors('emailConfirm')}? 'has-error':''">
+                                <input class="form-control form-control-lg" id="email_confirm"
+                                       placeholder="name@example.com" required th:field="*{emailConfirm}" type="email"/>
+                                <label for="email_confirm">Confirm e-mail</label>
+                                <div class="invalid-feedback text-start">
+                                    Please enter a valid E-mail.
+                                </div>
+                                <p class="alert alert-danger" th:each="error : ${#fields.errors('emailConfirm')}"
+                                   th:text="${error}">Validation error</p>
+                            </div>
+                            <div class="form-floating mb-4"
+                                 th:classappend="${#fields.hasErrors('password')}? 'has-error':''">
+                                <input class="form-control form-control-lg" id="password" maxlength="30"
+                                       minlength="6" placeholder="Password" required th:field="*{password}"
+                                       type="password"/>
+                                <label for="password">Password</label>
+                                <div class="invalid-feedback text-start">
+                                    6 characters minimum.
+                                </div>
+                                <p class="alert alert-danger" th:each="error : ${#fields.errors('password')}"
+                                   th:text="${error}">Validation error</p>
+                            </div>
+                            <div class="form-floating mb-4"
+                                 th:classappend="${#fields.hasErrors('passwordConfirm')}? 'has-error':''">
+                                <input class="form-control form-control-lg" id="password_confirm"
+                                       maxlength="30" minlength="6" placeholder="Password"
+                                       required th:field="*{passwordConfirm}" type="password"/>
+                                <label for="password_confirm">Confirm password</label>
+                                <p class="alert alert-danger" th:each="error : ${#fields.errors('passwordConfirm')}"
+                                   th:text="${error}">Validation error</p>
+                                <div class="invalid-feedback text-start">
+                                    Password confirmation must be valid.
+                                </div>
+                            </div>
+                            <div class="form-check mb-4 text-start"
+                                 th:classappend="${#fields.hasErrors('terms')}? 'has-error':''">
+                                <input class="form-check-input" id="terms" th:field="*{terms}" type="checkbox" required/>
+                                <label class="form-check-label" for="terms"> I agree with the <a href="#">terms and
+                                    conditions</a> for Registration.</label>
+                                <div class="invalid-feedback text-start">
+                                    You must agree before submitting.
+                                </div>
+                                <p class="alert alert-danger" th:each="error : ${#fields.errors('terms')}"
+                                   th:text="${error}">Validation error</p>
+                            </div>
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-primary btn-lg" type="submit">Register</button>
+                            </div>
+                            <div class="mb-0 mt-5">Already registered? <a
+                                    class="text-decoration-none text-black-50 fw-bold" th:href="@{/login}">Login
+                                here</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script th:src="@{/js/validation.js}"></script>
+</body>
+</html>
